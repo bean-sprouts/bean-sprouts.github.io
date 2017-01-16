@@ -1,0 +1,32 @@
+﻿*{
+	margin:0;
+	border:0;
+}
+.title{
+	width: 400px;
+	height: 70px;
+	margin: 0 auto;
+	padding-top: 30px;
+	color: red;
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+}
+.btns{
+	width: 230px;
+	height: 50px;
+	margin: 0 auto;
+}
+.btns span{
+	display: block;
+	float: left;
+	width: 90px;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+	color: white;
+	background-color: blue;
+	margin-right: 20px;
+	border-radius: 7px;
+	cursor: pointer;
+}
