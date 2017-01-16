@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src=" http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <title>带有分散效果的瀑布流</title>
+    <style type="text/css">
+        *{padding: 0;margin:0;}
+        #main{
+            position: relative;
+        }
+        .pin{
+            padding: 15px 0 0 15px;
+            float:left;
+        }
+        .box{
+            padding: 10px;
+            border:1px solid #ccc;
+            box-shadow: 0 0 6px #ccc;
+            border-radius: 5px;
+        }
+        .box img{
+            width:162px;
+            height:auto;
+        }
+    </style>
+    <script>
+        //alert('test');
+        $(window).on( "load", function(){
+            // 调用waterfall函数
+            waterfall();
+            var dataInt={'data':[{'src':'1.jpg'},{'src':'2.jpg'},{'src':'3.jpg'},{'src':'4.jpg'}]};
+            window.onscroll=function(){
+                // 拖动滚动条时
+            }
+        });
+        //图片布局函数
+        function waterfall(){
+            // 计算及定位数据块显示分散效果
+            //给每一个box生成随机的margin-left和margin-right
+            var $pins=$('#main>div');
+            //居中父元素
+            var w=$pins.eq(0).outerWidth();
+            var cols=Math.floor($(window).width()/w);
+            var $left=0;
+            var $top=0;
+            $('#main').width(w*cols).css('margin','0 auto');//这个width()方法不需要单位
+            $pins.each(function(zIndex){
+                //左外边距、上外边距在屏幕的一半宽度、高度加减300px之
+                //console.log(Math.floor(Math.random()*10));
+                $this=$(this);
+                //分散布局
+                $left=Math.floor($(window).width()/2)+(Math.random()*10<5?1:-1)*Math.ceil(Math.random()*200)-$this.width()/2;
+                $top=Math.floor($(window).height()/2)+(Math.random()*10<5?1:-1)*Math.ceil(Math.random()*100)-$this.height()/2;
+                //扑克牌布局
+                //$left += Math.floor($(window).width()/$pins.length);
+                //$top = 200;
+                //console.log(Math.floor($(window).clientWidth);
+                zIndex = -(zIndex+1);
+                $this.css({
+                    'position':'absolute',
+                    'left':$left,
+                    'top':$top,
+                    'z-index':zIndex
+                });
+            });
+            setTimeout(moveImg,3000);
+            //图片定位函数
+            function moveImg(){
+                var hArr=[],
+                    targetLeft=[],
+                    targetTop=[];
+                //求出每张图片的目标位置
+                //$pins.eq(0).attr('targetLeft','0');
+                $pins.each(function(i,val){
+                    $val =$(val);
+                    //$val.iniLeft=parseInt($pins.eq(i).css('left'));
+                    //$val.iniTop=parseInt($pins.eq(i).css('top'));
+                    if(i<cols){
+                        hArr[i] = $pins.eq(i).outerHeight();
+                        targetLeft[i]=i*w;
+                        targetTop[i]=0;
+                        //console.log(hArr[i]);
+                    }else {
+                        var minH = Math.min.apply(null, hArr);
+                        var minHIndex = $.inArray(minH, hArr);
+                        targetLeft[i] = minHIndex * w;
+                        targetTop[i] = minH;
+                        hArr[minHIndex] += $pins.eq(i).outerHeight();
+                    }
+                    /*$val.attr('targetLeft',targetLeft);
+                    $val.targetTop=targetTop;
+                    console.log($val.targetTop);*/
+                    //同时运动
+                    startMove($pins,i);
+                });
+                //逐个运动
+                //startMove($pins,0);
+                //console.log(object[0].targetTop);
+                function startMove(obj,index){
+                    var timer;
+                    clearInterval(timer);
+                    timer=setInterval(function(){
+                        //console.log(i);
+                        var json={'left':targetLeft[index],'top':targetTop[index]};
+                        var flag=true;
+                        var speed=0;
+                        $.each(json,function(key,value){
+                            var icur=parseInt(obj.eq(index).css(key));
+                            var time=20;
+                            //console.log('当前'+key+':'+icur);
+                            //console.log('目标'+key+':'+value);
+                            if(icur!=value){
+                                flag=false;
+                                /*if(key=='left'){
+                                 speed=(value-icur)>speed?parseInt((value-$val.iniLeft)/time):icur>value?-1:1;
+                                 }else{
+                                 speed=(value-icur)>speed?parseInt((value-$val.iniTop)/time):icur>value?-1:1;
+                                 }*/
+                                //speed影响动画的平滑度
+                                speed=(value-icur)/time;
+                                speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
+                                //speed*=icur>value?-1:1;
+                                //console.log('当前速度'+speed);
+                                obj.eq(index).css(key,icur+speed);
+                                //console.log(i+'+'+icur);
+                            }
+                        });
+                        if(flag){
+                            clearInterval(timer);
+                            $pins.eq(index).css('z-index',-100);
+                            //逐个运动
+                            /*if(index<$pins.length){
+                                //console.log(flag);
+                                index++;
+                                startMove($pins,index);
+                                //clearInterval(timer);
+                            }*/
+                        }
+                        //定时器间隔时间影响动画速度
+                    },4);
+                }
+            }
+        }
+
+        /*function checkscrollside(){
+         // 检测是否具备了加载数据块的条件
+         }*/
+
+    </script>
+</head>
+<body>
+<div id="main">
+    <div class="pin">
+        <div class="box">
+            <img src="http://p1.s.hjfile.cn/thread/201208/2012080692648622_604_o.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://t1.niutuku.com/960/10/10-202370.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://www.33lc.com/article/UploadPic/2012-8/201282413335761587.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://img4.iyiou.com/Cover/2015-07-16/hangye-chongwu.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://a.hiphotos.baidu.com/zhidao/pic/item/54fbb2fb43166d22c7e78a8e402309f79052d21c.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://d03.res.meilishuo.net/pic/_o/69/53/20a15e4995b1e7cb79c9239d9369_640_640.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://a.36krcnd.com/photo/2014/20193c5b8742fec8fc560fa23523141e.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://www.wallcoo.com/animal/MX069_Pretty_Puppies_puppy_garden_adventure/wallpapers/1920x1080/Garden_adventure_of_the_little_puppy_photos_pictures_puppy_MIL56021.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://www.wallcoo.com/animal/v195_Lively_Dogs/wallpapers/1280x800/Lively_Dogs_wallpaper_MIX88041_wallcoo.com.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://photoshow.108sq.com/user/2016/1007/16051096875055141650132564.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://t2.s1.dpfile.com/pc/mc/5f1ae46708551d50985ab65a8f5bafab%28640x1024%29/thumb.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://img1.sc115.com/uploads/sc/jpg/144/18655.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://pixabay.com/static/uploads/photo/2014/11/09/22/56/husky-524459_640.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://pic1a.nipic.com/2008-10-23/20081023151446695_2.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://t1.niutuku.com/960/10/10-202370.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://easyread.ph.126.net/5cBqK29sRy1s8oGcr4pDXw==/7916849857360275754.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://t1.niutuku.com/960/21/21-262687.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://images.china.cn/attachement/jpg/site1000/20111211/002564bb1f43104e5bdb2d.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="http://img1.3lian.com/2015/a2/249/d/223.jpg"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
