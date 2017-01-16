@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>todoApp</title>
+    <!--加载层叠样式表-->
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<audio id="alerter" src="alert.mp3"></audio>
+<!--总容器开始-->
+<div class="container">
+    <h1>我的Todo</h1>
+    <div class="msg">
+        <span class="content"></span>
+        <div class="msg-button">朕知道了</div>
+    </div>
+    <form class="add-task" id="add_task">
+        <input type="text" id="new_task"
+               autofocus
+               autocomplete="off"
+               placeholder="e.g.下午记得买肉">
+        <button type="submit">submit</button>
+    </form>
+    <div class="task-list" id="task_list"><!--清单列表开始-->
+
+    </div><!--清单列表结束-->
+    <div class="task-detail-mask"></div><!--任务详情遮罩-->
+    <!--<div class="task-detail">&lt;!&ndash;任务详情开始&ndash;&gt;-->
+
+    </div><!--任务详情结束-->
+</div>
+<!--加载js资源-->
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/store/store.js"></script>
+<script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
+<script src="js/base.js"></script>
+</body>
+</html>
