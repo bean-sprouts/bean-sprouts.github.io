@@ -38,8 +38,7 @@
         function waterfall(){
             // 计算及定位数据块显示分散效果
             //给每一个box生成随机的margin-left和margin-right
-            var $pins=$('.pin');
-            console.log('$pins',$pins);
+            var $pins=$('#main>div');
             //居中父元素
             var w=$pins.eq(0).outerWidth();
             var cols=Math.floor($(window).width()/w);
@@ -78,7 +77,8 @@
                     //$val.iniLeft=parseInt($pins.eq(i).css('left'));
                     //$val.iniTop=parseInt($pins.eq(i).css('top'));
                     if(i<cols){
-                        hArr[i] = $pins.eq(i).outerHeight();
+                        var h=$pins.eq(i).outerHeight();
+                        hArr[i]=h;
                         targetLeft[i]=i*w;
                         targetTop[i]=0;
                         //console.log(hArr[i]);
@@ -99,9 +99,8 @@
                 //startMove($pins,0);
                 //console.log(object[0].targetTop);
                 function startMove(obj,index){
-                    var timer;
                     clearInterval(timer);
-                    timer=setInterval(function(){
+                    var timer=setInterval(function(){
                         //console.log(i);
                         var json={'left':targetLeft[index],'top':targetTop[index]};
                         var flag=true;
