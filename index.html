@@ -1,54 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>个人简历</title>
-<style>
-h1 {
-font-weight: bold;
-font-size: 50px;
-text-align: center;
-}
-.nav {
-width: 80%;
-height: 30%;
-margin-left: auto;
-margin-right: auto;
-zoom:1;
-}
-.nav:after{display:block;clear:both;content:"";visibility:hidden;height:0}
-a {
-float: left;
-text-decoration: none;
-padding: 0.2em 1em;
-border-right: 2px solid white;
-border-bottom: 2px solid white;
-color: white;
-background-color: #98bf21;
-    margin: 2px;
-}
-    a:hover{
-        background-color: #68cdd5;
-    }
-</style>
+    <meta charset="UTF-8">
+    <title>个人简历</title>
+    <style>
+        body {
+            background: #00a5b6;
+            color: #fff;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            height: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            zoom: 1;
+        }
+
+        .container:after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0
+        }
+
+        a {
+            float: left;
+            text-decoration: none;
+            padding: 0.2em 1em;
+            color: white;
+            -webkit-box-shadow: 1px 1px 4px #B2E62B;
+            -moz-box-shadow: 1px 1px 4px #B2E62B;
+            box-shadow: 1px 1px 4px #e6e0d8;
+            background-color: #717bbf;
+            margin: 2px;
+        }
+
+        a:hover {
+            background-color: #68cdd5;
+        }
+        .fl,.fr{
+            width: 47%;
+            border: 1px solid #000;
+            padding: 1%;
+        }
+        .fl{
+            float: left;
+        }
+        .fr{
+            float: right;
+        }
+        .container h2{
+            font-size: 14px;
+            position: absolute;
+            padding: 0 1em;
+            top: -1.5em;
+            background: #00a5b6;
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
 <h1>我的项目</h1>
-<div class="nav">
-    <a href="todoApp/index.html">todoAPP</a><br>
-    <p><strong>简介：</strong>通过localstorage实现记事本的添加、删除、修改，通过定时器实现定时提醒功能。</p>
-    <br>
-    <a href="分散效果的瀑布流.html">图片分散效果</a><br>
-    <p><strong>简介：</strong>通过计算图片的初始位置和目标位置，利用JS实现图片的分散运动效果。</p>
-    <br>
-    <a href="QQ登录面板/index.html">QQ登录面板</a><br>
-    <p><strong>简介：</strong>实现了登录状态的选择、面板得拖拽等。</p>
-    <br>
-    <a href="抽奖系统/index.html">抽奖系统</a><br>
-    <p><strong>简介：</strong>随机数、鼠标事件、键盘事件</p>
-    <br>
-    <a href="粽情端午/index.html">粽情端午</a><br>
-    <p><strong>简介：</strong>用CSS3的动画实现了文字的移动、粽子的打开</p>
+<div class="container">
+    <div class="fl">
+        <h2>完整应用</h2>
+        <a href="todoApp/index.html" target="_blank">todoAPP</a><br>
+        <p><strong>简介：</strong>通过localstorage实现记事本的添加、删除、修改，通过定时器实现定时提醒功能。</p>
+        <br>
+        <a href="小说阅读器/index.html" target="_blank">小说阅读器</a><br>
+        <p><strong>简介：</strong>实现了阅读器的内容加载、字体修改、背景修改、base64图片等，，用到了AJAX、json等技术</p>
+        <br>
+        <a href="IT教育网2015课程学习情况/index.html" target="_blank">IT教育网</a><br>
+        <p><strong>简介：</strong>模块化开发web站点，包含了饼图、柱状图、散点图、环图、折线图等图形，用到了CSS3、canvas实现动画效果</p>
+        <br>
+        <a href="我的1016星座运势/index.html" target="_blank">星座运势</a><br>
+        <p><strong>简介：</strong>模块化运用实例</p>
+    </div>
+    <div class="fr">
+        <h2>小插件</h2>
+        <a href="分散效果的瀑布流.html" target="_blank">图片分散效果</a><br>
+        <p><strong>简介：</strong>通过计算图片的初始位置和目标位置，利用JS实现图片的分散运动效果。</p>
+        <br>
+        <a href="粽情端午/index.html" target="_blank">粽情端午</a><br>
+        <p><strong>简介：</strong>用CSS3的动画实现了文字的移动、粽子的打开</p>
+        <br>
+        <a href="QQ登录面板/index.html" target="_blank">QQ登录面板</a><br>
+        <p><strong>简介：</strong>实现了登录状态的选择、面板得拖拽等。</p>
+        <br>
+        <a href="抽奖系统/index.html" target="_blank">抽奖系统</a><br>
+        <p><strong>简介：</strong>随机数、鼠标事件、键盘事件</p>
+    </div>
 </div>
 </body>
 </html>
