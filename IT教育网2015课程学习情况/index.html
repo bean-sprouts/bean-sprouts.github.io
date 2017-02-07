@@ -91,17 +91,18 @@
             var h5=new H5();
             h5.whenAddPage=function(){
                 this.addComponent('slide_up',{
-                    height:39,
+                    height: 39,
                     bg:'imgs/footer.png',
                     css:{
                         width:'100%',
                         opacity:0,
                         bottom:-20,
-                        zIndex:100
+                        zIndex:100,
+                        'background-size': '100% 19.5px'
                     },
                     animateIn:{
                         opacity:1,
-                        bottom:-1,
+                        bottom:-1
                     },
                     animateOut:{
                         opacity:0,
@@ -329,8 +330,7 @@
                         ],
                     css: {
                         top: 100,
-                        right: 30,
-                        opacity: 0,
+                        opacity: 0
                     },
                     animateIn:{
                         top: 160,
@@ -340,6 +340,7 @@
                         top:100,
                         opacity:0
                     },
+                    center: true
                 })
             .addPage()
                 .addComponent('caption',{text:'后端开发课程'})//radar
