@@ -1,0 +1,144 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--加载字体图标-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--加载materialize样式文件-->
+    <link type="text/css" rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <!--禁用缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>materialize学习</title>
+
+    <style type="text/css">
+        body nav, .content {
+            padding: 0 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        table .dropdown-button i {
+            position: absolute;
+            margin-left: 0;
+        }
+
+        table th {
+            margin: 0 12px;
+        }
+        table td,th{
+            padding: 10px 5px;
+        }
+        .bar{
+            width: 90%;
+            height: 50%;
+            margin: 0 auto;
+        }
+        .row{
+            margin-bottom: 0;
+        }
+        .modal{
+            width: 800px;
+            height: 600px;
+            right:auto;
+            left: 50%;
+            margin-left: -400px;
+        }
+        .modal .modal-footer{
+            position: absolute;
+            padding-top:0;
+            padding-bottom:0;
+            height: 2em;
+            line-height: 2em;
+            bottom: 0;
+        }
+        .modal .modal-footer a:first-child{
+            border-right: 2px solid #fff;
+        }
+        .modal .modal-footer a{
+            text-decoration: none;
+            color: white;
+        }
+        .modal .modal-footer a:hover{
+            background-color: #000;
+        }
+        .my-alert{
+            position: fixed;
+            width: 400px;
+            height: 300px;
+            top: 30%;
+            left: 50%;
+            margin-left: -200px;
+            background: #fff;
+            color: #444;
+            border-radius: 5px;
+            padding: 30px 10px 90px 10px;
+            text-align: center;
+        }
+        .my-alert .confirm{
+            display: block;
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            margin-left: -43px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 下拉菜单 -->
+<ul id="dropdown_1" class="dropdown-content">
+    <li><a href="#">表格一</a></li>
+    <li><a href="#">表格二</a></li>
+    <li><a href="#">表格三</a></li>
+</ul>
+<!-- 顶部导航条开始 -->
+<nav class="blue lighten-1">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">重庆赛迪冶炼装备</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+
+        <ul class="right hide-on-med-and-down">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li>
+                <a class="dropdown-button" href="#" data-activates="dropdown_1">
+                    表格
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li><a href="#">关于</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li><a href="#">表格一</a></li>
+            <li><a href="#">表格二</a></li>
+            <li><a href="#">表格三</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </div>
+</nav><!-- 顶部导航条结束 -->
+<div class="content">
+    <p class="right">总行数：<span id="rows_total"></span>行,总记录数：<span id="data_total"></span>条</p>
+
+
+    <!-- 表格部分开始 -->
+    <table class="centered highlight bordered">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+
+    <!-- 分页导航 -->
+    <ul class="pagination center">
+    </ul><!-- 分页导航结束 -->
+
+</div>
+<!--加载materialize.js文件-->
+<script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="lib/echarts.min.js"></script>
+
+<script type="text/javascript" src="js/base.js"></script>
+
+</body>
+</html>

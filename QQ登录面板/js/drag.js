@@ -78,7 +78,7 @@ function fndown(){
 			y=event.clientY-disY,
 		//获取视窗宽度
 			winW=document.documentElement.clientWidth || document.body.clientWidth,
-			winH=document.documentElement.clientHeight || document.bodu.clientHeight,
+			winH=document.documentElement.clientHeight || document.body.clientHeight,
 			maxW=winW-oDrag.offsetWidth,
 			maxH=winH-oDrag.offsetHeight; 
 		//限制窗口移动范围

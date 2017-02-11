@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--加载字体图标-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--加载materialize样式文件-->
+    <link type="text/css" rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection"/>
+    <link rel="stylesheet" href="css/base.css">
+    <title>重庆赛迪冶炼设备</title>
+
+</head>
+<body>
+<!-- 下拉菜单 -->
+<ul id="dropdown_1" class="dropdown-content">
+    <li><a href="table.html">表格一</a></li>
+    <li><a href="table.html">表格二</a></li>
+    <li><a href="table.html">表格三</a></li>
+</ul>
+<!-- 顶部导航条开始 -->
+<nav class="blue lighten-1">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">重庆赛迪冶炼装备</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+
+        <ul class="right hide-on-med-and-down">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li>
+                <a class="dropdown-button" href="#" data-activates="dropdown_1">
+                    表格
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li><a href="#">关于</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li><a href="table.html">表格一</a></li>
+            <li><a href="table.html">表格二</a></li>
+            <li><a href="table.html">表格三</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </div>
+</nav><!-- 顶部导航条结束 -->
+
+<div id="timeline">
+    <ul id="dates">
+        <li><a href="#date1">2017/2/9</a><span class="dot"></span></li>
+        <li><a href="#date2">2017/2/10</a><span class="dot"></span></li>
+        <li><a href="#date3">2017/2/11</a><span class="dot"></span></li>
+        <li><a href="#date4">2017/2/12</a><span class="dot"></span></li>
+    </ul>
+    <ul id="issues">
+        <li id="date1">
+            <h5>更新内容：</h5>
+            <p>1、实现了底部分页导航自动计算页数</p>
+            <p>2、点击页码异步加载表格数据</p>
+            <p>3、左右方向箭头切换页码功能</p>
+        </li>
+        <li id="date2">
+            <h5>更新内容：</h5>
+            <p>1、	优化分页导航，只显示中间7页的页码（已完成）</p>
+            <p>2、	表格旁显示总列数（已完成）</p>
+            <p>3、	实现点击表头弹出下拉框的功能（已完成）</p>
+            <p>4、	学习echarts 3（已完成）</p>
+
+        </li>
+        <li id="date3">
+            <h5>更新内容：</h5>
+            <p>1、	实现点击下拉框中的离散化弹出模态框的功能（已完成）</p>
+            <p>2、	实现根据浏览器分辨率设置行数</p>
+            <p>3、	分页导航条新增首页和末页按钮</p>
+            <p>4、	实现模态框的拖动功能</p>
+
+        </li>
+        <li id="date4">
+            <h5>更新内容：</h5>
+            <p>1、	markLine的拖动,分箱的实现</p>
+            <p>2、根据页面输入的分箱数，重绘图形</p>
+        </li>
+    </ul>
+
+    <a href="#" id="next"></a>
+    <a href="#" id="prev"></a>
+
+</div>
+
+<footer class="page-footer blue lighten-1">
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                <h5 class="white-text">页脚内容</h5>
+                <p class="grey-text text-lighten-4">你可以用行和列来组织你的页脚内容。</p>
+            </div>
+            <div class="col s6">
+                <h5 class="white-text">链接</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">链接 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">链接 2</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Copyright 文本
+            <a class="grey-text text-lighten-4 right" href="#!">更多链接</a>
+        </div>
+    </div>
+</footer>
+
+<!--加载materialize.js文件-->
+<script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="lib/jquery.timelinr-0.9.6.js"></script>
+<script type="text/javascript" src="lib/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+//    <!--下拉菜单初始化-->
+    $('.dropdown-button').dropdown({
+        hover: true,
+        belowOrigin: true
+    });
+//    <!-- 折叠导航初始化 -->
+    $(".button-collapse").sideNav({
+        edge: 'right'
+    });
+//配置时间轴
+    $(function(){
+        $().timelinr({
+            autoPlay: 'true',
+            orientation: 'vertical',
+            issuesSpeed: 300,
+            datesSpeed: 100,
+            arrowKeys: 'true',
+            mousewheel: 'true'
+        });
+    });
+</script>
+</body>
+</html>
